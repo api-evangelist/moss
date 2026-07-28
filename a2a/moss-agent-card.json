@@ -1,0 +1,48 @@
+{
+  "name": "Moss",
+  "version": "1.0.0",
+  "protocolVersion": "1.0.0",
+  "description": "Real-time semantic search runtime for AI agents. Sub-10ms semantic, keyword, or hybrid retrieval against project-owned indexes, hosted or on-device. Supports bring-your-own embeddings.",
+  "url": "https://www.moss.dev",
+  "documentationUrl": "https://docs.moss.dev",
+  "provider": {
+    "organization": "InferEdge Inc.",
+    "url": "https://www.moss.dev"
+  },
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "supportedInterfaces": [
+    {
+      "url": "https://service.usemoss.dev/v1",
+      "transport": "HTTP"
+    }
+  ],
+  "capabilities": [
+    "semantic-search",
+    "keyword-search",
+    "hybrid-search",
+    "vector-indexing",
+    "bring-your-own-embeddings"
+  ],
+  "skills": [
+    {
+      "id": "semantic-search",
+      "name": "Semantic Search",
+      "description": "Sub-10ms similarity search against a project index. Tunable alpha blends pure semantic (1.0) and pure keyword/BM25 (0.0) retrieval. Supports top-k, metadata filters, and optional pre-computed query embeddings."
+    },
+    {
+      "id": "index-management",
+      "name": "Index Management",
+      "description": "Create, load, list, and delete semantic search indexes. Built-in embedding models moss-minilm (fast, default) and moss-mediumlm (higher accuracy), or bring-your-own embeddings per document."
+    },
+    {
+      "id": "document-operations",
+      "name": "Document Operations",
+      "description": "Add, upsert, retrieve, and delete documents within an index. Documents carry id, text, optional string-keyed metadata for filtering, and optional pre-computed embeddings."
+    }
+  ]
+}

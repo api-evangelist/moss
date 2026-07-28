@@ -1,0 +1,36 @@
+generated: '2026-07-28'
+method: probed
+source: https://www.moss.dev/.well-known/agent-card.json
+description: 'A2A Agent Card observed at /.well-known/agent-card.json on moss.dev. Grade is measured against
+  the A2A 1.0.0 AgentCard object: ''conformant'' passes every structural check, ''near-conformant'' is
+  correctly shaped but omits optional fields, ''flavored'' fails a hard check and is an agent card in
+  spirit rather than in schema. Provider-published by construction — served from the provider''s own host;
+  nothing here is derived or generated.'
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: moss.dev
+conformance:
+  spec: A2A 1.0.0
+  grade: flavored
+  protocol_version: 1.0.0
+  preferred_transport: null
+  deviations:
+  - capabilities-not-object
+  - no-preferredTransport
+  - nonstandard-supportedInterfaces
+card:
+  name: Moss
+  description: Real-time semantic search runtime for AI agents. Sub-10ms semantic, keyword, or hybrid
+    retrieval against project-owned indexes, hosted or on-device. Supports bring-your-own embeddings.
+  url: https://www.moss.dev
+  version: 1.0.0
+  documentation_url: https://docs.moss.dev
+  skills: 3
+  file: moss-agent-card.json
+x-evidence:
+  fetched: '2026-07-28'
+  url: https://www.moss.dev/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.
