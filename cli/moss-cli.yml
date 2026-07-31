@@ -1,0 +1,53 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs/integrations/moss-cli.md
+name: Moss CLI
+binary: moss
+install:
+- method: pip
+  command: pip install moss-cli
+package: packages/moss-packages.yml
+auth:
+  resolution_order:
+  - CLI flags (--project-id / --project-key)
+  - Environment variables (MOSS_PROJECT_ID / MOSS_PROJECT_KEY)
+  - Config profile (~/.moss/config.json, selected by --profile / MOSS_PROFILE)
+  setup: moss init
+commands:
+- group: init
+  summary: Interactive credential setup (supports --profile).
+- group: index
+  summary: Index lifecycle.
+  subcommands:
+  - "index create <name> -f <file> [--model moss-minilm] [--wait]"
+  - "index list"
+  - "index get <name>"
+  - "index delete <name> [--confirm]"
+- group: doc
+  summary: Document management.
+  subcommands:
+  - "doc add <index> -f <file> [--upsert] [--wait]"
+  - "doc get <index> [--ids id1,id2]"
+  - "doc delete <index> --ids id1,id2"
+- group: query
+  summary: Search an index (local by default; --cloud to skip download).
+  flags:
+  - "--top-k / -k (default 10)"
+  - "--alpha / -a (semantic weight, default 0.8)"
+  - "--cloud / -c"
+  - "--filter (JSON metadata filter, local only)"
+  - "--interactive (REPL)"
+  - "--json"
+- group: job
+  summary: Async build job tracking.
+  subcommands:
+  - "job status <job-id> [--wait]"
+- group: profile
+  summary: Manage credential profiles.
+  subcommands:
+  - "profile list"
+  - "profile delete <name> --force"
+file_formats:
+- "JSON (array of {id, text, metadata}, or {\"documents\": [...]})"
+- "CSV (id,text,metadata columns)"
+- stdin

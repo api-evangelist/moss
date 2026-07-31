@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.moss.dev/docs/integrations/mcp-server.md
+server:
+  name: moss
+  package: "@moss-tools/mcp-server"
+  transport: stdio
+  command: npx
+  args:
+  - "-y"
+  - "@moss-tools/mcp-server"
+  env:
+  - name: MOSS_PROJECT_ID
+    required: true
+    description: Your Moss project ID.
+  - name: MOSS_PROJECT_KEY
+    required: true
+    description: Your Moss project key.
+  clients:
+  - Claude Desktop
+  - Cursor
+  - VS Code
+  - Windsurf
+tools:
+- name: query
+  group: search
+  description: Semantic search over an index; returns documents ranked by similarity. Runs locally (~1-10ms) after load_index.
+- name: load_index
+  group: search
+  description: Download an index into memory for fast local querying.
+- name: create_index
+  group: index-management
+  description: Create a new index with documents (supports moss-minilm and moss-mediumlm embedding models).
+- name: list_indexes
+  group: index-management
+  description: List all indexes in the project.
+- name: get_index
+  group: index-management
+  description: Get metadata and status for a specific index.
+- name: delete_index
+  group: index-management
+  description: Delete an index and all its documents.
+- name: add_docs
+  group: document-operations
+  description: Add documents to an existing index; supports upsert by ID.
+- name: get_docs
+  group: document-operations
+  description: Retrieve documents from an index (all documents if no IDs specified).
+- name: delete_docs
+  group: document-operations
+  description: Delete documents from an index by their IDs.
+- name: get_job_status
+  group: jobs
+  description: Check the status of an async job (e.g. index builds triggered by other SDKs).

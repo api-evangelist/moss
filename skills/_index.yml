@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/usemoss/moss-skills (verbatim, provider-published)
+skills:
+- file: moss-semantic-search.md
+  name: Moss
+  description: Core SDK integration - install, authenticate, create indexes, add documents, and run semantic queries.
+  api: Moss Control Plane API + SDKs
+  operations: [createIndex, addDocs, loadIndex, query, deleteDocs, getDocs]
+  source: https://github.com/usemoss/moss-skills/blob/main/skills/moss/SKILL.md
+- file: moss-mcp-integration.md
+  name: Moss MCP
+  description: MCP server setup for Cursor, Claude, VS Code, and Windsurf using @moss-tools/mcp-server.
+  api: "@moss-tools/mcp-server"
+  operations: [query, load_index, create_index, list_indexes, get_index, delete_index, add_docs, get_docs, delete_docs, get_job_status]
+  source: https://github.com/usemoss/moss-skills/blob/main/skills/moss-mcp/SKILL.md

@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of Moss hosts
+note: >-
+  No /.well-known/ discovery documents were found. Recorded for provenance; no
+  WellKnown scoring pointer is emitted since no catalog/document exists.
+hosts:
+- host: https://service.usemoss.dev
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.moss.dev
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://docs.moss.dev
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}

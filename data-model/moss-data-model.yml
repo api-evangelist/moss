@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.moss.dev/docs (Control Plane API + core concepts) — no OpenAPI published
+note: >-
+  Derived from the documented Control Plane request/response model and core
+  concepts; Moss does not publish a machine-readable OpenAPI, so this graph is
+  reconstructed from the API reference and SDK reference pages.
+entities:
+- name: Project
+  id_field: projectId
+  description: Top-level tenant issued by Moss Control; scopes indexes and credentials.
+- name: Index
+  id_field: indexName
+  description: A named vector index of documents built with an embedding model; can be loaded locally for sub-10ms queries.
+  fields: [indexName, modelId, docCount, dimension, status]
+- name: Document
+  id_field: id
+  description: A unit of content with text, optional metadata, and optional custom embedding; upsertable by id.
+  fields: [id, text, metadata, embedding]
+- name: Job
+  id_field: jobId
+  description: Async index build job returned by mutations; polled via getJobStatus.
+  fields: [jobId, currentPhase, status, error]
+- name: Session
+  description: Local-first, in-process index (SessionIndex) for real-time create-resume-query-push before pushing to the cloud.
+relationships:
+- from: Project
+  to: Index
+  type: has_many
+  via: projectId
+- from: Index
+  to: Document
+  type: has_many
+  via: indexName
+- from: Index
+  to: Job
+  type: has_many
+  via: indexName
+- from: Document
+  to: Index
+  type: belongs_to
+  via: indexName
+embedding_models:
+- moss-minilm
+- moss-mediumlm
+- custom

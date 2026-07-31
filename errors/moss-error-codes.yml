@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs/reference/errors.md and https://docs.moss.dev/docs/api-reference/v1/getting-started/overview.md
+format: json-error-envelope
+envelope:
+  shape: '{ "error": "Human-readable message", "action": "<action>" }'
+  notes: >-
+    Control Plane failures return a JSON body with an `error` message; `action`
+    is present on server errors. Invalid credentials return HTTP 403 Forbidden.
+errors:
+- code: Unauthorized
+  http: 403
+  cause: Missing or invalid credentials.
+  remediation: Set MOSS_PROJECT_ID and MOSS_PROJECT_KEY (or pass project_id/project_key to the client).
+- code: Index not found
+  cause: Querying or loading an index that does not exist.
+  remediation: Call createIndex() first; verify the name matches exactly (case-sensitive).
+- code: Index not loaded
+  cause: Calling query() before loadIndex().
+  remediation: Call loadIndex(name) before query(); query() throws if the index is not loaded locally.
+- code: Index already exists
+  cause: Calling createIndex() on an existing index name.
+  remediation: Use addDocs() with upsert:true to update, or delete the index first.
+- code: Missing embeddings runtime
+  cause: Invalid or unrecognised modelId.
+  remediation: Use moss-minilm, moss-mediumlm, or custom.
+- code: Embedding required
+  cause: Using modelId 'custom' without providing embedding.
+  remediation: Supply an embedding array on every document and every query() call.
+- code: Job failed
+  cause: Async mutation error.
+  remediation: Inspect JobStatusResponse.error via getJobStatus(jobId); check currentPhase (JobPhase) for where it failed.
+notes: >-
+  These are SDK/API-surface errors, not payment decline codes (Moss is not a
+  payments provider). The live reference at
+  https://docs.moss.dev/docs/reference/errors is the source of truth.

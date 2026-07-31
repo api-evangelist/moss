@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.moss.dev/pricing, https://trust.moss.dev, https://docs.moss.dev/docs
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Control Plane uses apiKey (x-project-key header) auth; no OAuth2 flows documented.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom JSON envelope { error, action }, not application/problem+json.
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response over HTTPS via POST /v1/manage.
+- id: mcp
+  conforms: true
+  evidence: Official MCP server @moss-tools/mcp-server exposes search + index-management tools.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 listed on pricing (Enterprise) and trust center (trust.moss.dev).
+- id: hipaa
+  conforms: true
+  evidence: HIPAA listed on pricing (Enterprise) and trust center (trust.moss.dev).
+compliance:
+  published: true
+  programs:
+  - SOC 2
+  - HIPAA
+  source: https://trust.moss.dev
+  availability: Enterprise tier (per https://www.moss.dev/pricing)

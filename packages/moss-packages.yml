@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: npm registry, PyPI, and https://docs.moss.dev
+packages:
+- language: javascript
+  registry: npm
+  name: "@moss-dev/moss"
+  url: https://www.npmjs.com/package/@moss-dev/moss
+  install: npm install @moss-dev/moss
+  official: true
+  description: Moss JavaScript/TypeScript SDK for cloud + local-first semantic search.
+- language: javascript
+  registry: npm
+  name: "@moss-dev/moss-web"
+  url: https://www.npmjs.com/package/@moss-dev/moss-web
+  install: npm install @moss-dev/moss-web
+  official: true
+  description: Browser / WebAssembly SDK for private, on-device semantic search in the web.
+- language: javascript
+  registry: npm
+  name: "@moss-tools/mcp-server"
+  url: https://www.npmjs.com/package/@moss-tools/mcp-server
+  install: npx -y @moss-tools/mcp-server
+  official: true
+  description: Model Context Protocol server exposing Moss search + index management as tools.
+- language: python
+  registry: pypi
+  name: moss
+  url: https://pypi.org/project/moss/
+  install: pip install moss
+  official: true
+  description: Python SDK for semantic search with on-device AI and local-first session indexing.
+- language: python
+  registry: pypi
+  name: moss-cli
+  url: https://pypi.org/project/moss-cli/
+  install: pip install moss-cli
+  official: true
+  description: Command-line interface for Moss semantic search (installs the `moss` binary).
+notes: >-
+  Docs also reference on-device SDKs for Swift, Elixir, and C (libmoss); those
+  are distributed through platform channels rather than the registries probed
+  here and are catalogued in the SDK reference at https://docs.moss.dev/docs/reference/sdk.

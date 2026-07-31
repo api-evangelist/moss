@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs/changelog.md
+scheme: semver
+tracks:
+- python
+- javascript
+current:
+  python: 1.1.0
+entries:
+- version: 1.1.0
+  date: '2026-05-06'
+  track: python
+  additions:
+  - "Multi-index query: query_multi_index(names, query, options) searches across multiple loaded indexes, returns global top-K tagged by source index_name."
+  - "Bulk index lifecycle: load_indexes(names) (returns LoadIndexesResult {loaded, failed}) and unload_indexes(names)."
+  - "QueryResultDocumentInfo now exposes an index_name field on multi-index results."
+  breaking: false
+- version: 1.0.0
+  date: '2026-03-29'
+  track: python
+  highlights:
+  - "First stable release of the `moss` Python SDK (previously published as `inferedge-moss`)."
+  - "Semantic search with built-in on-device models (moss-minilm, moss-mediumlm); embedding computation runs in Rust; custom embeddings via QueryOptions.embedding."
+  - "Hybrid search with configurable alpha blending; metadata filtering with rich operators; cloud query fallback; hot reload / auto-refresh; async bulk index pipeline."
+  - "Python 3.10 to 3.14 supported."
+  breaking: true
+  breaking_notes: "Import path changed: `from moss import MossClient` (was `from inferedge_moss import ...`)."
+- version: 1.0.0-beta.17
+  date: '2026-02-26'
+  track: python
+  additions:
+  - "Metadata filtering on query() with comparison ($eq,$ne,$gt,$gte,$lt,$lte), set ($in,$nin), composition ($and,$or), and geo-distance ($near) operators."
+  breaking: false
+- version: 1.0.0-beta.14
+  date: '2026-02-06'
+  track: python
+  highlights:
+  - "Query latency reduced from ~2,300ms to ~10ms for 100K vectors; reduced memory overhead for large hybrid-search indexes."
+  breaking: false
+- version: 1.0.0-beta.13
+  date: '2026-02-02'
+  track: python
+  additions:
+  - "Hot Reload & Auto-Refresh: load_index() accepts auto_refresh and polling_interval_in_seconds; SDK polls for cloud updates (default 600s)."
+  breaking: false
+note: >-
+  Recent window only; the live changelog at https://docs.moss.dev/docs/changelog
+  is the source of truth and also carries a JavaScript track.

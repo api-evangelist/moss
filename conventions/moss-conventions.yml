@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs (API reference, integrate, and reference sections)
+conventions:
+  auth:
+    style: apiKey
+    header: x-project-key
+    body_field: projectId
+    ref: authentication/moss-authentication.yml
+  request_shape:
+    style: action-multiplexed
+    endpoint: POST /v1/manage
+    version_header: x-service-version
+    version_value: v1
+    description: >-
+      All Control Plane operations are multiplexed through POST /v1/manage with
+      an `action` string plus the fields required for that action.
+  idempotency:
+    supported: partial
+    mechanism: upsert-by-id
+    header: null
+    description: >-
+      No request-level Idempotency-Key header is documented. Document writes are
+      idempotent by document `id`: addDocs with upsert:true (CLI --upsert, SDK
+      MutationOptions) updates existing documents rather than duplicating them.
+  pagination:
+    style: none
+    description: listIndexes and getDocs return the full set for a project/index; no cursor or offset pagination is documented.
+  metadata_filtering:
+    location: local queries (loaded indexes)
+    operators:
+      comparison: ["$eq", "$ne", "$gt", "$gte", "$lt", "$lte"]
+      set: ["$in", "$nin"]
+      composition: ["$and", "$or"]
+      geo: ["$near"]
+    note: Cloud query API does not yet support metadata filtering; a warning is logged and the filter is skipped.
+  hybrid_search:
+    parameter: alpha
+    range: "0.0 (pure keyword) .. 1.0 (pure semantic)"
+    default: 0.8
+    ref: https://docs.moss.dev/docs/integrate/hybrid-search
+  embedding_models:
+    builtin: ["moss-minilm", "moss-mediumlm"]
+    custom: "modelId: custom + supply embedding[] per document and per query"
+  async_jobs:
+    pattern: submit -> poll
+    return_type: MutationResult { job_id, index_name, doc_count }
+    status_op: getJobStatus / get_job_status
+    description: create_index/add_docs/delete_docs return a MutationResult; poll getJobStatus until the build job completes.
+  error_envelope:
+    shape: '{ "error": "Human-readable message", "action": "addDocs" }'
+    ref: errors/moss-error-codes.yml
+  versioning:
+    scheme: uri-path + header
+    current: v1
+    ref: lifecycle/moss-lifecycle.yml
+  rate_limits:
+    signaling: none-documented
+    note: Plan quotas (storage/ingest/egress/indexes) are enforced per pricing tier; no rate-limit response headers are documented.

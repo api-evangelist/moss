@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.moss.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  1 18:13:06 2026 GMT
+  hsts: true
+  hsts_max_age: 30
+- host: docs.moss.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 11 17:23:01 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+- host: service.usemoss.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 25 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: moss.dev
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: usemoss.dev
+  dnssec: true
+  caa: []
+  spf: false
+  dmarc: true
+  dmarc_policy: none

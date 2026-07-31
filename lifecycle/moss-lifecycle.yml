@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs (API reference + changelog)
+versioning:
+  scheme: uri-path + header
+  current: v1
+  uri_prefix: /v1
+  version_header: x-service-version
+  docs: https://docs.moss.dev/docs/api-reference/v1/getting-started/introduction
+sdk_versioning:
+  scheme: semver
+  changelog: changelog/moss-changelog.yml
+  docs: https://docs.moss.dev/docs/changelog
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+status_page_notes: No public status page (status.moss.dev / status.usemoss.dev do not resolve) was found.
+deprecated_operations: []

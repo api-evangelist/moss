@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs/founding-agent/embed/react-components.md
+components:
+- family: Founding Agent
+  description: >-
+    Embeddable voice AI agent for a website that answers visitors, qualifies
+    buyers, and books meetings, dropped onto a page via a React provider and a
+    chat/voice bubble.
+  kind: react-ui
+  surfaces:
+  - name: React provider
+    description: Wraps the app to supply Founding Agent session context.
+  - name: Voice bubble
+    description: Floating voice/chat UI dropped onto the site.
+  - name: Demo booking
+    description: Lets visitors book a demo by voice, backed by a Cal.com calendar.
+  auth:
+    publishable_key: browser
+    api_key: server
+    token_route: Mint a session server-side so the API key never reaches the browser.
+    docs: https://docs.moss.dev/docs/founding-agent/embed/server-token-route
+  docs: https://docs.moss.dev/docs/founding-agent/overview
+note: >-
+  These are client-side embeddable UI components for the Founding Agent product,
+  distinct from the server/on-device search SDKs catalogued in packages/.

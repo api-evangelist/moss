@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.moss.dev/docs/api-reference/v1/getting-started/authentication.md
+docs: https://docs.moss.dev/docs/integrate/authentication
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - body
+  oauth2_flows: []
+schemes:
+- name: project-key
+  type: apiKey
+  in: header
+  parameter: x-project-key
+  description: >-
+    Project access key sent in the x-project-key header. Requests to the Moss
+    Control Plane API also require an x-service-version: v1 header and a
+    projectId field in the JSON body. Invalid credentials return 403 Forbidden
+    with a JSON error payload.
+  sources:
+  - https://docs.moss.dev/docs/api-reference/v1/getting-started/authentication.md
+- name: project-id
+  type: apiKey
+  in: body
+  parameter: projectId
+  description: Project identifier issued by Moss Control, supplied in the JSON request body alongside the x-project-key header.
+sdk_env:
+- MOSS_PROJECT_ID
+- MOSS_PROJECT_KEY
+notes: >-
+  SDKs (JS/Python) construct a MossClient with (project_id, project_key) or read
+  MOSS_PROJECT_ID / MOSS_PROJECT_KEY from the environment. Browser/frontend
+  clients use a Custom Authenticator to mint short-lived tokens server-side so
+  the project key never ships to the browser
+  (https://docs.moss.dev/docs/reference/js/custom-authenticator). No OAuth2/OIDC
+  scope surface is documented; auth is project-key based.
