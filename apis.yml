@@ -21,6 +21,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgentSkill
+  url: skills/moss-mcp-integration.md
+- type: MCPServer
+  url: mcp/moss-mcp.yml
 - type: AgentCard
   url: a2a/moss-a2a.yml
   name: A2A Agent Card
