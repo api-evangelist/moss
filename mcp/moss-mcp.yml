@@ -4,12 +4,12 @@ status: published
 source: https://docs.moss.dev/docs/integrations/mcp-server.md
 server:
   name: moss
-  package: "@moss-tools/mcp-server"
+  package: '@moss-tools/mcp-server'
   transport: stdio
   command: npx
   args:
-  - "-y"
-  - "@moss-tools/mcp-server"
+  - -y
+  - '@moss-tools/mcp-server'
   env:
   - name: MOSS_PROJECT_ID
     required: true
@@ -25,7 +25,8 @@ server:
 tools:
 - name: query
   group: search
-  description: Semantic search over an index; returns documents ranked by similarity. Runs locally (~1-10ms) after load_index.
+  description: Semantic search over an index; returns documents ranked by similarity. Runs locally (~1-10ms)
+    after load_index.
 - name: load_index
   group: search
   description: Download an index into memory for fast local querying.
@@ -53,3 +54,9 @@ tools:
 - name: get_job_status
   group: jobs
   description: Check the status of an async job (e.g. index builds triggered by other SDKs).
+deployment:
+  mode: local-stdio
+  verified: searched
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census
